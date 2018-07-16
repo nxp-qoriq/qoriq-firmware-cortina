@@ -1,0 +1,36 @@
+Steps to flash AQ firmware for AQ PHY on u-boot
+-----------------------------------------------
+
+Required input images:
+---------------------
+Software to programm PHY firmware
+  File Name:aq_programming.bin
+PHY firmware
+For LX2 RDB Board XFI     AQR107:AQR-G2_v3.2.3-AQR_Freescale_AQR107_ID16066_VER487.cld
+For LX2 RDB Board USXGMII AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld
+For QDS Board,AQR405:AQ28nm-FW_2.0.B0_Freescale_LS2085A_1205141.cld
+
+Steps to flash firmware on RDB board
+------------------------------------
+(1)Download above mentioned aquantia PHY firmware and Software(aq_programming.bin)
+   to tftp location or storage media(USB etc.)
+(2)Check MAC mapping for AQ PHY
+   => mdio list
+   FSL_MDIO0:
+   0 - Cortina CS4223 <-->
+   1 - AR8035 <--> DPMAC17@rgmii
+   2 - AR8035 <--> DPMAC18@rgmii
+   4 - Aquantia AQR107 <--> DPMAC1@xgmii
+   5 - Aquantia AQR107 <--> DPMAC2@xgmii
+(3)Command to download and run software to flash PHY firmware
+Usage: go 0x80300000 <ETHDEV_NAME> <Firmware_address> <Firmware_size>
+e.g:
+USB:
+usb start;fatload usb 0:1 0x80300000 aq_programming.bin;fatload usb 0:1 0x82000000 AQR-G2_v3.2.3-AQR_Freescale_AQR107_ID16066_VER487.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
+
+TFTP:
+tftp 0x80300000 aq_programming.bin;tftp 0x82000000 AQR-G2_v3.2.3-AQR_Freescale_AQR107_ID16066_VER487.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
+
+Note:
+-For USXGMII use the same steps and program AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld image in the phy.
+-Similar steps with firmware change(AQ28nm-FW_2.0.B0_Freescale_LS2085A_1205141.cld) can be used for QDS board.
