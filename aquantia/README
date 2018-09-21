@@ -6,9 +6,10 @@ Required input images:
 Software to programm PHY firmware
   File Name:aq_programming.bin
 PHY firmware
-For LX2 RDB Board XFI     AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_XFI_ID16066_VER919.cld
-For LX2 RDB Board USXGMII AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld
+For LX2 RDB Board XFI     AQR107:AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-XFI_ID24377_VER965.cld
+For LX2 RDB Board USXGMII AQR107:AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-USXGMII_ID24109_VER965.cld
 For QDS Board,AQR405:AQ28nm-FW_2.0.B0_Freescale_LS2085A_1205141.cld
+For QDS Board,AQR405 USXGMII: AQ28nm_v2.C.7-AQR_Freescale_LX2QDS_ID24191_VER934_USXGMII.cld
 
 Steps to flash firmware on RDB board
 ------------------------------------
@@ -26,10 +27,10 @@ Steps to flash firmware on RDB board
 Usage: go 0x80300000 <ETHDEV_NAME> <Firmware_address> <Firmware_size>
 e.g:
 USB:
-usb start;fatload usb 0:1 0x80300000 aq_programming.bin;fatload usb 0:1 0x82000000 AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_XFI_ID16066_VER919.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
+usb start;fatload usb 0:1 0x80300000 aq_programming.bin;fatload usb 0:1 0x82000000 AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-XFI_ID24377_VER965.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
 
 TFTP:
-tftp 0x80300000 aq_programming.bin;tftp 0x82000000 AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_XFI_ID16066_VER919.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
+tftp 0x80300000 aq_programming.bin;tftp 0x82000000 AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-XFI_ID24377_VER965.cld;go 0x80300000 DPMAC1@xgmii 0x82000000 $filesize;
 
 Note:
 -For USXGMII use the same steps and program AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld image in the phy.
