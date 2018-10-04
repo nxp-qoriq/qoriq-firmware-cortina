@@ -6,10 +6,10 @@ Required input images:
 Software to programm PHY firmware
   File Name:aq_programming.bin
 PHY firmware
-For LX2 RDB Board XFI     AQR107:AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-XFI_ID24377_VER965.cld
-For LX2 RDB Board USXGMII AQR107:AQR-G2_v3.5.E-AQR_Freescale_LX2RDB-USXGMII_ID24109_VER965.cld
-For QDS Board,AQR405:AQ28nm-FW_2.0.B0_Freescale_LS2085A_1205141.cld
-For QDS Board,AQR405 USXGMII: AQ28nm_v2.C.7-AQR_Freescale_LX2QDS_ID24191_VER934_USXGMII.cld
+For LX2 RDB Board XFI     AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_XFI_ID16066_VER919.cld
+For LX2 RDB Board USXGMII AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld
+For LX2 QDS Board XFI	  AQR405:AQ28nm_v2.C.8-AQR_Freescale_LX2QDS-XFI_ID24724_VER1019.cld
+For LX2 QDS Board USXGMII AQR405:AQ28nm_v2.C.8-AQR_Freescale_LX2QDS-USXGMII_ID24191_VER997.cld
 
 Steps to flash firmware on RDB board
 ------------------------------------
@@ -34,4 +34,4 @@ tftp 0x80300000 aq_programming.bin;tftp 0x82000000 AQR-G2_v3.5.E-AQR_Freescale_L
 
 Note:
 -For USXGMII use the same steps and program AQR107:AQR-G2_v3.5.A-AQR_Freescale_LX2RDB_AQR107_USXGMII_ID24109_VER919.cld image in the phy.
--Similar steps with firmware change(AQ28nm-FW_2.0.B0_Freescale_LS2085A_1205141.cld) can be used for QDS board.
+-Similar steps with firmware change(AQ28nm_v2.C.8-AQR_Freescale_LX2QDS-USXGMII_ID24191_VER997.cld) can be used for QDS board.
